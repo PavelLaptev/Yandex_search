@@ -1,0 +1,58 @@
+// import
+@import "normalize"
+
+// colors
+$clr__yandex: #FFDD3A
+$clr__yandex__lighten: lighten($clr__yandex,20%)
+$clr__red: #D33B3B
+$clr__links: #0056E0
+
+// style
+*
+	box-sizing: border-box
+	//border: 1px solid
+::selection
+	background: $clr__yandex 
+
+h2
+	margin-top: 40px
+	font-size: 32px
+
+html
+	font-family: Arial,Helvetica,sans-serif
+
+body
+	-webkit-font-smoothing: antialiased
+	-moz-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	text-rendering: optimizeLegibility
+
+section
+	margin-bottom: 80px
+
+footer
+	background: #F2F2EC
+	text-align: center
+	padding: 150px 0
+
+.header
+	margin-top: 40px
+	margin-bottom: 60px
+	h1
+		margin: 50px 0 0 
+	span
+		font-size: 14px
+		color: #7E7E7E
+	a
+		color: $clr__links
+		font-size: 48px
+		font-weight: bolder
+		text-decoration: none
+		&:hover
+			color: $clr__red
+
+.wrap
+	max-width: 800px
+	flex-direction: column
+	margin: 0 auto
+	text-align: center

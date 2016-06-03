@@ -1,0 +1,1138 @@
+// import
+@import "normalize"
+
+// mixins
+
+// colors
+$clr__yandex: #FFDD3A
+$clr__yandex__lighten: lighten($clr__yandex,20%)
+$clr__footer: #F6F6F2
+$clr__footer__light: #F6F6F2
+$clr__links: #0056E0
+$clr__green: #64A320
+$clr__kinopoisk: #FF4D00
+$clr__light: #F6F6F2
+$clr__red: #D33B3B
+$clr__lightgray: #8A8A8A
+$clr__blockborder: #D3D3D3
+
+// vars
+$radius: 3px
+$border-blocks: 1px solid $clr__blockborder
+$border-blocks__hover: 1px solid darken($clr__blockborder, 20%)
+$border-search: 3px solid $clr__yandex
+$hover-shadow: 0 2px 4px 1px rgba(0,0,0,0.2)
+
+// fonts
+$btn__regular: 15px
+$link__head: 18px
+$text__small: 14px
+$text__smaller: 13px
+
+// style
+*
+	box-sizing: border-box
+	//border: 1px solid
+::selection
+	background: $clr__yandex 
+
+html
+	font-family: Arial,Helvetica,sans-serif
+	border: none
+	//background: $clr__kinopoisk
+
+body
+	-webkit-font-smoothing: antialiased
+	-moz-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	text-rendering: optimizeLegibility
+	border: none
+
+.wrap
+	max-width: 1540px
+	display: flex
+	flex-direction: column
+	margin: 120px auto 0
+	//border: 1px solid rgba(0,0,0,0.1)
+
+.header__back__scroll
+	height: 110px !important
+.header__bar__scroll
+	height: 50px !important
+.search__scroll
+	height: 40px !important
+.icon-input__clear__scroll
+	margin: 10px 10px !important
+.icon-input__settings__scroll
+	margin: 10px 18px 10px 10px !important
+.search-button__scroll
+	&:after
+		width: 25px !important
+		height: 25px !important
+		right: calc(-30px/2) !important
+.header__bar__hold__scroll
+	padding: 3px 20px !important
+.header__bar__link__scroll
+	padding: 3px 20px !important
+	
+.header
+	position: fixed
+	display: flex
+	flex-direction: column
+	padding-bottom: 20px 
+	z-index: 99999
+	top: 0
+	&__back
+		position: fixed
+		top: 0
+		left: 0
+		height: 140px
+		background: rgba(255,255,255,0.98)
+		display: block 
+		width: 100% 
+		z-index: 99998
+		transition: all 0.2s
+		//box-shadow: 0 0 16px rgba(0,0,0,0.1)
+	&__bar
+		z-index: 9999
+		margin-left: 120px
+		height: 60px
+		display: flex
+		align-items: center
+		transition: all 0.2s
+		&__hold
+			cursor: pointer
+			color: rgba(0,0,0,0.3)
+			font-size: $btn__regular
+			position: relative 
+			background: darken($clr__light, 2%)
+			padding: 10px 20px
+			margin-right: 10px
+			border-radius: $radius
+			transition: color 0.2s
+			&:hover
+				color: rgba(0,0,0,0.8)
+				text-decoration: underline
+			&__more
+				cursor: pointer
+				font-size: $btn__regular
+				text-decoration: none
+				color: black  
+				background: #FFF
+				padding: 10px 20px
+				border-radius: $radius
+				transition: all 0.2s !important
+				&:hover
+					color: rgba(0,0,0,0.8)
+					span
+						color: $clr__red
+				span
+					color: rgba(0,0,0,0.2)
+					//vertical-align: bottom
+		&__link
+			z-index: 9999 
+			position: absolute
+			font-size: $btn__regular
+			text-decoration: none
+			color: black  
+			background: #FFF
+			padding: 10px 20px
+			border-radius: $radius
+			top: 0
+			left: 0
+			transition: color 0.2s, box-shadow 0.2s
+			&:hover
+				color: $clr__red 
+				box-shadow: $hover-shadow 
+			&__disable
+				position: absolute !important
+				top: 50% !important
+				left: 10px !important
+				transform: translateY(-50%)
+				background: lighten($clr__yandex, 20%)
+				&:hover
+					box-shadow: none
+
+.link_move
+	animation: link_move 0.5s forwards
+
+@keyframes link_move
+	50%
+		transform: translateY(18px)
+
+
+.search
+	display: flex
+	height: 58px
+	transition: all 0.2s
+	&__logo
+		width: 120px
+		height: inherit
+		background-image: url(../img/ya-logo.svg)
+		background-repeat: no-repeat
+		background-position: center 40%
+	&__wrap
+		height: inherit
+		border-top: $border-search
+		border-bottom: $border-search
+		border-left: $border-search
+		position: relative
+		display: flex
+		&__input-box
+			position: relative 
+			height: 100%
+			display: flex
+			&__icons
+				display: flex
+				position: absolute
+				right: 110px
+		.search-button
+			background: white
+			border: none
+			padding: 0 20px 0 30px
+			font-size: 20px
+			transition: all 0.2s
+			outline: none 
+			&:after
+				z-index: -1
+				background: white
+				display: block
+				position: absolute
+				top: 50%
+				right: calc(-42px/2)
+				transform: translateY(-50%) rotate(45deg)
+				content: ''
+				width: 38px
+				height: 38px
+				border-top: $border-search
+				border-right: $border-search
+				transition: all 0.2s
+			&:hover
+				background: $clr__yandex
+				&:after
+					background: $clr__yandex
+		.search-input
+			padding: 0 90px 0 14px
+			width: 660px
+			height: 100%
+			border: none
+			font-size: 18px
+			transition: all 0.1s
+			outline-color: transparent
+			box-sizing: border-box
+			&:hover
+				background: lighten($clr__yandex, 35%)
+			&__drop-active
+				background: lighten($clr__yandex, 25%) !important
+			&:focus
+				background: white
+				outline-color: $clr__yandex
+				& + [class*="search-button"]
+					background: $clr__yandex
+				& + .search-button:after
+					background: $clr__yandex
+			
+.icon-input
+	&__clear
+		position: relative
+		margin: 18px 10px
+		cursor: pointer
+		width: 16px
+		height: 16px
+		opacity: 0.4
+		transition: all 0.2s
+		&:hover
+			opacity: 1 
+		.left
+			display: block
+			position: absolute 
+			height: 22px
+			width: 2px
+			top: -3px
+			right: 50%
+			background: black
+			transform: rotate(45deg) 
+			border-radius: 100px
+		.right
+			display: block
+			position: absolute 
+			height: 22px
+			width: 2px
+			top: -3px
+			right: 50%
+			background: black
+			transform: rotate(-45deg) 
+			border-radius: 100px
+	&__settings
+		position: relative
+		display: flex
+		justify-content: space-between
+		margin: 18px 18px 18px 10px
+		cursor: pointer
+		width: 18px
+		height: 18px
+		opacity: 0.4
+		transition: all 0.2s
+		.strike
+			display: block
+			position: relative 
+			height: 16px
+			width: 2px
+			background: black
+			border-radius: 100px
+			.trigger
+				&__buttom
+					position: absolute 
+					width: 6px
+					height: 6px
+					left: -2px
+					bottom: 2px
+					background: black 
+					border-radius: 100px
+					transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+				&__top
+					position: absolute 
+					width: 6px
+					height: 6px
+					left: -2px
+					top: 2px
+					background: black 
+					border-radius: 100px
+					transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+		&:hover
+			opacity: 1 
+			.trigger
+				&__buttom
+					bottom: 8px
+				&__top
+					top: 8px
+					
+.search
+	&__body
+		display: flex
+		margin-top: 20px
+		&__more-btn
+			cursor: pointer 
+			border-radius: $radius
+			border: $border-blocks
+			text-align: center 
+			padding: 10px 20px 
+			transition: all 0.1s
+			&:hover
+				background: lighten($clr__yandex__lighten, 14%)
+				//border: 1px solid $clr__yandex
+		&__result
+			min-width: 500px
+			flex: 3 2 0
+			margin: 20px 20px 20px 120px
+			&__afisha
+				margin-bottom: 30px   
+				&__theater
+					p
+						font-size: $text__small
+						span
+							color: $clr__lightgray
+					&__other
+						margin: 20px 0 
+						display: flex 
+						align-items: center
+						hr
+							flex: 1.2 1.2 0
+							width: 100% 
+							border: none
+							border-top: $border-blocks
+						button
+							flex: 1 1 0
+							font-size: 16px 
+							padding: 6px 20px 
+							margin-right: 10px
+							background: white
+							border: $border-blocks 
+							border-radius: $radius
+							transition: all 0.2s
+							font-size: $text__small 
+							&:hover
+								border: 1px solid $clr__yandex__lighten
+								background: lighten($clr__yandex__lighten, 14%)
+								color: $clr__red
+					&__table
+						font-size: $text__small
+						display: flex 
+						a
+							margin: 10px 0  
+							font-size: $text__small
+							color: $clr__links
+							text-decoration: none
+							transition: color 0.14s
+							padding: 0 16px 8px 0
+							&:hover
+								color: $clr__red
+						button
+							margin:  8px 6px
+							padding: 6px 10px 
+							background: lighten($clr__lightgray, 40%)
+							border: none 
+							border-radius: $radius
+							transition: background 0.14s
+							&:hover
+								background: $clr__yandex__lighten
+				&__movie
+					position: relative
+					display: flex 
+					margin-bottom: 20px   
+					&__cover
+						width: 120px
+						height: 170px
+						margin-right: 20px 
+						background-color: lighten(gray, 30%)
+						background-image: url('../img/tweenpeaks2017.jpg') 
+						background-size: 100%
+						background-repeat: no-repeat 
+					&__info
+						display: flex
+						flex-direction: column
+						&__head
+							padding: 0 10px 8px 0
+							position: relative
+							font-size: 22px
+							color: $clr__links
+							text-decoration: none
+							transition: color 0.14s
+							&:hover
+								color: $clr__red
+						&__links 
+							margin: 10px 0 
+							a
+								font-size: $text__small
+								color: $clr__links
+								text-decoration: none
+								transition: color 0.14s
+								padding: 0 16px 8px 0
+								&:hover
+									color: $clr__red
+						&__btns
+							display: flex 
+							margin-top: 16px 
+							&__trailer-btn
+								border: none
+								font-size: 16px 
+								padding: 10px 30px 
+								margin-right: 10px
+								background: white
+								border: $border-blocks 
+								transition: all 0.2s
+								&:hover
+									border: 1px solid white
+									background: $clr__yandex__lighten
+								span
+									color: black !important  
+							&__buy-tickets
+								border: none
+								font-size: 16px 
+								padding: 10px 3vw
+								border-radius: $radius
+								color: black
+								background: $clr__yandex
+								transition: all 0.2s
+								span
+									color: black !important
+								&:hover
+									box-shadow: 0 0 14px 2px rgba(255, 221, 0, 0.6)
+									background: darken($clr__yandex, 10%)
+						span
+							font-size: $text__small
+							color: $clr__lightgray
+							padding: 4px 0
+							line-height: 20px 
+						
+
+			&__item
+				margin-bottom: 36px
+				&__submenu a
+					color:  darken($clr__links, 26%)
+					opacity: 0.6 
+					padding: 10px 20px 10px 0 
+					text-decoration: none 
+					font-size: $text__smaller 
+					transition: opacity 0.15s
+					&:hover
+						color: $clr__red
+						opacity: 1 
+				&__head
+					padding: 8px 10px 8px 0
+					position: relative
+					font-size: $link__head
+					color: $clr__links
+					text-decoration: none
+					transition: color 0.14s
+					&:hover
+							color: $clr__red
+				&__options
+					padding: 8px 0 0
+					font-size: $text__small
+					color: $clr__lightgray
+					a
+						text-decoration: none 
+						padding: 8px 0 0
+						font-size: $text__small
+						color: $clr__lightgray
+						&:hover
+							color: $clr__red
+					span
+						cursor: pointer
+						padding: 6px
+						font-size: 10px
+						&:hover
+							color: black
+				&__discription
+					margin-top: 12px
+					font-size: $text__smaller
+					line-height: 19px
+					span
+						font-size: $link__head
+						vertical-align: bottom
+						color: lighten($clr__lightgray, 20%)
+		&__helper
+			flex: 3 3 0
+			margin: 20px 120px 20px 20px
+			@media (max-width: 1550px)
+				margin: 20px 20px 20px 20px
+
+.also-search
+	opacity: 0.6 
+	padding: 30px 
+	background: $clr__footer 
+	display: flex 
+	flex-direction: column
+	transition: opacity 0.4s
+	&:hover
+		opacity: 1 
+	a
+		padding: 10px 14px
+		text-decoration: none 
+		font-size: $text__smaller
+		color: $clr__links
+		transition: color 0.2s
+		&:hover
+			color: $clr__red
+	&__header
+		margin-bottom: 20px
+		font-size: 16px 
+	&__row
+		display: flex 
+	&__col
+		margin-right: 40px  
+		display: flex 
+		flex-direction: column
+		@media (max-width: 1200px)
+			margin-right: 10px
+		@media (max-width: 1120px)
+			&:nth-child(3)
+				display: none
+
+
+.underlinks
+	text-align: right 
+	margin: 20px 0 30px
+	a
+		display: inline-block
+		padding: 0 14px 10px
+		text-decoration: none 
+		font-size: 11px
+		color: lighten(black, 70%)
+		transition: color 0.2s
+		&:hover
+			color: $clr__red
+
+.video-snippet
+	border: $border-blocks
+	border-radius: $radius
+	overflow: hidden
+	position: relative
+	hr
+		margin: 20px 30px 
+		border: none
+		border-top: $border-blocks
+	&__also
+		padding: 0 30px 
+		display: flex
+		flex-direction: column
+		&__header
+			font-size: 16px
+			color: $clr__links
+			font-weight: bolder
+			text-decoration: none  
+			transition: color 0.2s
+			&:hover
+				color: $clr__red
+		&__row
+			display: flex
+			position: relative
+			&__item
+				width: 70px 
+				margin: 20px 20px 20px 0
+				@media (max-width: 1300px)
+					&:nth-child(5)
+						display: none 
+				@media (max-width: 1200px)
+					&:nth-child(4)
+						display: none 
+				@media (max-width: 1030px)
+					&:nth-child(3)
+						display: none 
+				&__all-btn
+					z-index: 999 
+					height: 77px 
+					cursor: pointer 
+					position: relative
+					padding: 16px 
+					margin: 20px 0px 20px 0
+					width: 90px
+					border: $border-blocks
+					border-radius: $radius
+					transition: all 0.2s
+					&__after
+						@media (max-width: 1120px)
+							top: 0
+							right: 0 
+							position: absolute
+							width: 140px
+							display: block
+							height: 180px
+							background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 37%,rgba(255,255,255,1) 100%)
+					@media (max-width: 1200px)
+						position: absolute
+						top: 0
+						right: 0 
+					a
+						text-decoration: none 
+						font-size: $text__smaller
+						color: black
+						transition: color 0.2s
+					&:hover
+						border: 1px solid $clr__yandex__lighten
+						background: lighten($clr__yandex__lighten, 14%)
+						a
+							color: $clr__red
+				span
+					font-size: $text__smaller
+					color: $clr__lightgray
+				a
+					text-decoration: none 
+					font-size: $text__smaller
+					color: black
+					transition: color 0.2s
+					&:hover
+						color: $clr__red
+				@for $i from 0 through 4
+					&__cover#{$i+1}
+						cursor: pointer 
+						margin-bottom: 10px  
+						background: gray 
+						width: 54px
+						height: 77px  
+						background-image: url('../img/films.png')
+						background-position: ($i*-54px) 0
+						&:hover
+								~ a
+									color: $clr__red
+	&__team
+		padding: 0 30px 
+		display: flex
+		@media (max-width: 1120px)
+			flex-direction: column 
+		&__others
+			margin-left: 20px  
+			display: flex
+			flex: 1 1 0
+			flex-direction: column 
+			font-size: $text__smaller
+			@media (max-width: 1300px)
+				flex: 1.8 1.8 0
+			@media (max-width: 1120px)
+				margin-left: 0
+				flex: none
+			&__item
+				&__header
+					font-weight: bolder 
+					margin-bottom: 16px 
+				&__links
+					margin-bottom: 30px  
+					a
+						white-space: pre-wrap
+						line-height: 150% 
+						text-decoration: none 
+						font-size: $text__smaller
+						color: $clr__links
+						transition: color 0.2s
+						&:hover
+							color: $clr__red
+				
+		&__actors
+			display: flex
+			flex: 1 1 0
+			flex-direction: column 
+			@media (max-width: 1120px)
+				flex: none	
+			&__header
+				font-size: 16px
+				color: $clr__links
+				font-weight: bolder
+				text-decoration: none  
+				transition: color 0.2s
+				&:hover
+					color: $clr__red
+			&__row
+				display: flex
+				flex-wrap: wrap
+				position: relative
+				@media (max-width: 1300px)
+					width: 180px
+				@media (max-width: 1120px)
+					width: 100%
+				&__item
+					&__all-btn
+						cursor: pointer 
+						position: relative
+						padding: 16px 
+						margin: 20px 0px 20px 0
+						width: 80px
+						border: $border-blocks
+						border-radius: $radius
+						transition: all 0.2s
+						z-index: 999 
+						&__after
+							@media (max-width: 1120px)
+								top: 0
+								right: 0 
+								position: absolute
+								width: 140px
+								display: block
+								height: 120px
+								background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 37%,rgba(255,255,255,1) 100%)   
+						@media (max-width: 1120px)
+							position: absolute
+							top: 0
+							right: 0
+							background: white 
+						a
+							text-decoration: none 
+							font-size: $text__smaller
+							color: black
+							transition: color 0.2s
+							@media (max-width: 1120px)
+								font-size: 12px
+						&:hover
+							border: 1px solid $clr__yandex__lighten
+							background: lighten($clr__yandex__lighten, 14%)
+							a
+								color: $clr__red
+					width: 70px
+					margin: 20px 6% 20px 0
+					@media (max-width: 1120px)
+						margin: 20px 10px 20px 0
+					a
+						text-decoration: none 
+						font-size: $text__smaller
+						color: black
+						transition: color 0.2s
+						&:hover
+							color: $clr__red
+					@media (max-width: 1300px)
+						&:nth-child(4)
+							display: none 
+						&:nth-child(5)
+							display: none 
+					@media (max-width: 1030px)
+						&:nth-child(3)
+							display: none 
+					@for $i from 0 through 4
+						&__photo#{$i+1}
+							cursor: pointer 
+							margin-bottom: 10px  
+							background: gray 
+							width: 52px
+							height: 52px  
+							background-image: url('../img/actors.png')
+							background-position: ($i*-52px) 0
+							&:hover
+								~ a
+									color: $clr__red
+	&__discription
+		padding: 25px 30px
+		color: lighten(black, 20%)
+		line-height: 150%
+		font-size: $text__smaller
+		a
+			color: $clr__links
+			text-decoration: none 
+			transition: color 0.2s
+			white-space: nowrap
+			&:hover
+				color: $clr__red
+	&__cover
+		color: white 
+		overflow: hidden 
+		display: flex 
+		position: relative
+		width: 100%
+		height: 220px
+		background: rgba(0,0,0,0.45)
+		transition: background 1s ease
+		&:hover
+			background: rgba(0,0,0,0.6) 
+			.video-snippet__cover__image
+				transform: scale(1.1)
+		&__image
+			position: absolute
+			height: 100%
+			width: 100%
+			z-index: -1 
+			background-image: url('../img/twin-peaks_cover.png') 
+			background-size: cover 
+			background-position: center 
+			transition: all 0.4s
+		&__title
+			position: absolute
+			left: 50%
+			width: 100% 
+			transform: translateX(-50%) 
+			margin: 30px 0
+			z-index: 9999
+			text-align: center  
+			font-size: $text__smaller 
+			@media (max-width: 1120px)
+				margin: 30px 20px
+				text-align: left
+			p
+				margin: 0  
+			span
+				font-size: 36px
+				font-weight: bolder 
+		.trailer__btn
+			//border: 1px solid white
+			z-index: 9999 
+			flex: 1 1 0
+			align-self: flex-end
+			text-align: right
+			padding: 20px 20px
+			@media (max-width: 1120px)
+				padding: 20px 20px 20px 0
+			button
+				white-space: nowrap
+				border: none
+				font-size: 16px 
+				padding: 10px 30px 
+				border-radius: $radius
+				color: black
+				background: white 
+				transition: color 0.2s
+				@media (max-width: 1120px)
+					padding: 10px 20px 
+					font-size: 14px
+				span
+					color: $clr__kinopoisk
+				&:hover
+					background: lighten($clr__yandex__lighten, 5%)
+		&__btns
+			margin: 20px 20px 24px
+			z-index: 9999 
+			align-self: flex-end
+			flex: 1 1 0
+			//border: 1px solid white
+			.raiting__btns
+				&__item
+					margin-top: 16px 
+					&__rate
+						color: white
+						font-size: $text__small
+						font-weight: bolder
+						border-radius: $radius
+						text-decoration: none 
+						margin: 10px 0
+						padding: 6px 
+					.top-rate
+						background: $clr__green
+					&__imdb-label
+						font-size: $text__small
+						padding: 6px 
+						color: white
+						border-radius: $radius
+						text-decoration: none 
+						background: darken(gray, 20%)
+					&__kinopoisk-label
+						font-size: $text__small
+						color: white
+						border-radius: $radius
+						text-decoration: none 
+						padding: 6px 
+						background: $clr__kinopoisk
+		&__info
+			z-index: 9999 
+			margin: 20px 20px
+			align-self: flex-start
+			flex: 1 1 0
+			@media (max-width: 1120px)
+				position: absolute
+				top: 0
+				right: 0
+				display: block
+			p
+				opacity: 0.6 
+				font-size: 18px 
+				margin: 0 
+				text-align: right 
+			//border: 1px solid white 
+			
+.video-row
+	margin: 20px 0
+	width: 100% 
+	display: flex 
+	-webkit-justify-content: space-between
+	justify-content: space-between
+	&__item
+		flex: 3 3 0
+		display: flex
+		flex-direction: column
+		min-width: 140px
+		margin-right: 10px  
+		height: 100% 
+		font-size: $text__smaller 
+		&:hover
+			color: $clr__red 
+			p
+				color: black
+			a
+				color: $clr__red 
+			@for $i from 0 through 4
+				.video-row__item__preview__#{$i+1}:after
+					transform: scaleX(0.8) translate(-50%, -50%)
+					opacity: 1 
+		p
+			margin: 10px 0 0
+		a
+			color: $clr__links
+			text-decoration: none 
+			padding: 10px 0 0
+			span
+				transition: color 0.1s
+				color: $clr__lightgray
+				&:hover
+					color: black
+		@for $i from 0 through 4
+			&__preview__#{$i+1}
+				cursor: pointer 
+				position: relative
+				background-color: rgba(0,0,0,0.1)
+				background-image: url('../img/video_prev' + #{$i+1} + '.png')
+				background-repeat: no-repeat 
+				background-size: cover
+				min-height: 94px 
+				max-height: 120px 
+				height: calc(20px + 6vw)
+				transition: all 0.2s
+				&:hover 
+					~ a
+						color: $clr__red 
+					&:after
+						transform: scaleX(0.8) translate(-50%, -50%)
+						opacity: 1 
+				&:after
+					opacity: 0 
+					display: block 
+					position: absolute
+					top: 50%
+					left: 50%
+					content: '►'
+					text-align: center
+					line-height: 50px  
+					color: $clr__yandex
+					font-size: 28px
+					transform: scaleX(0.8) translate(-50%, -45%)
+					width: 64px
+					height: 50px
+					border-radius: 100%
+					background: rgba(0,0,0,0.6)
+					transition: opacity 0.1s
+				&:before
+					position: absolute
+					content: '1:40:30'
+					font-weight: bolder 
+					font-size: 12px 
+					color: #FFF 
+					padding: 10px
+					left: 4px
+					bottom: 4px   
+					display: block
+					background: rgba(0,0,0,0.4) 
+
+	&__more
+		cursor: pointer 
+		position: relative 
+		max-width: 60px 
+		min-width: 40px 
+		min-height: 94px 
+		max-height: 120px 
+		height: calc(20px + 6vw)
+		border-radius: $radius
+		border: $border-blocks 
+		transition: all 0.2s
+		&:hover
+			border: 1px solid white
+			background: $clr__yandex__lighten
+			p
+				opacity: 0.5
+		p
+			line-height: 12px    
+			opacity: 0.3
+			position: absolute
+			top: 36%
+			left: 50%
+			transform: translate(-50%, -50%)
+			
+.popup
+	position: absolute
+	display: none
+	opacity: 0
+	flex-direction: column
+	border: $border-blocks
+	border-radius: $radius
+	padding: 10px 
+	background: white
+	a
+		font-size: $text__small
+		padding: 10px 14px 
+		color: black
+		text-decoration: none
+		&:hover
+			background: $clr__yandex__lighten
+	&__search-path
+		font-size: $text__small
+		padding: 10px 14px 
+		a
+			color: $clr__lightgray
+			&:hover
+				text-decoration: underline 
+				background: none !important
+		span
+			font-size: $text__smaller
+			color: $clr__lightgray
+
+@for $i from 0 through 12
+	.favicon__#{$i+1}
+		position: absolute
+		left: -28px
+		display: block
+		width: 16px
+		height: 16px
+		background-image: url('../img/favicons.png')
+		background-position: 0 ($i*-16px)
+
+
+.footer
+	&__menu
+		background: darken($clr__footer, 6%) 
+		&__wrap
+			display: flex
+			flex-direction: column 
+			align-items: center
+			padding: 30px 0 
+			max-width: 1540px
+			display: flex
+			margin: 0 auto
+			ul
+				margin: 10px
+			a
+				font-size: $text__smaller
+				text-decoration: none
+				color: $clr__lightgray 
+				padding: 10px 20px 0px 0
+				transition: color 0.2s
+				&:hover
+					color: black
+			span
+				font-size: $text__smaller
+				text-decoration: none
+				color: $clr__lightgray 
+				padding: 10px 20px 0px 0
+	&__othersearches
+		background: $clr__footer 
+		&__wrap
+			display: flex
+			padding: 20px 0 
+			flex-direction: column 
+			max-width: 1540px
+			display: flex
+			margin: 0 auto
+			a
+				font-weight: bolder 
+				font-size: $text__small
+				text-decoration: none
+				color: $clr__lightgray 
+				padding: 10px 20px 10px 0
+				transition: color 0.2s
+				&:hover
+					color: black
+			&__location
+				margin: 20px 20px 10px 120px
+				a
+					position: relative
+				a:first-child:after
+					position: absolute
+					content: "" 
+					width: 32px
+					height: 32px  
+					top: 8px
+					left: -36px
+					background-image: url('../img/bulleye_icon.svg')
+					background-repeat: no-repeat 
+			&__searchsystem
+				margin: 10px 20px 20px 120px
+				a
+					position: relative
+				a:first-child:after
+					position: absolute
+					content: "" 
+					width: 32px
+					height: 32px  
+					top: 10px
+					left: -36px
+					background-image: url('../img/search_icon.svg')
+					background-repeat: no-repeat 
+
+.ya-mail
+	z-index: 99999 
+	position: absolute
+	padding: 20px
+	right: 0
+	a
+		text-decoration: none
+		color: black
+		font-size: $btn__regular 
+		padding: 10px 
+		transition: color 0.2s
+		&:hover
+			color: $clr__red
+			~ span
+				background: lighten($clr__red, 5%)
+	firstletter
+		color: $clr__red
+	span
+		color: white
+		background: $clr__red
+		padding: 4px 6px  
+		border-radius: 100px
+		font-size: $text__smaller
+		
+// .favicon
+// 	position: absolute
+// 	left: -28px
+// 	display: block
+// 	width: 16px
+// 	height: 16px
+// 	background-image: url('../img/favicons.png')
+// 	background-position: 0 0
+// .wiki
+// 	background-position: 0 0
+// .kinopoisk
+// 	background-position: 0 -16px
