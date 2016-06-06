@@ -1,5 +1,4 @@
-<h1 style="text-align: center; font-size: 40px;">Более лучший поиск</h1>
-<p style="text-align: center; color: #9f9f9f;">Если кратко</p>
+<h1 style="text-align: center; font-size: 40px;">Учимся смотреть прямо</h1>
 </br>
 
 <p align="center">
